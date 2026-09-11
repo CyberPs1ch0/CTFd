@@ -1,0 +1,1176 @@
+/* ==========================================================================
+   Hogwarts: Hidden Formula - Custom CTFd Theme Stylesheet
+   Designed for MSC Hogwarts CTF Event
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Cinzel:wght@500;700;900&family=MedievalSharp&family=Crimson+Pro:ital,wght@0,400;0,600;1,400&family=Fira+Code:wght@400;600&display=swap');
+
+:root {
+  --hw-bg-deep: #05070f;
+  --hw-bg-night: #090e1c;
+  --hw-bg-card: rgba(13, 19, 36, 0.88);
+  --hw-bg-card-hover: rgba(20, 30, 56, 0.95);
+  --hw-bg-modal: #090e1e;
+  
+  --hw-gold-bright: #ffe07a;
+  --hw-gold-main: #e5c158;
+  --hw-gold-dark: #aa8628;
+  --hw-gold-muted: #786227;
+  --hw-gold-glow: 0 0 20px rgba(229, 193, 88, 0.45);
+  --hw-gold-glow-lg: 0 0 35px rgba(229, 193, 88, 0.65);
+  
+  --hw-border-gold: rgba(229, 193, 88, 0.35);
+  --hw-border-gold-hover: rgba(255, 224, 122, 0.85);
+  
+  --hw-text-light: #f5edd8;
+  --hw-text-gold: #e5c158;
+  --hw-text-muted: #a1aec6;
+  
+  --hw-font-title: 'Cinzel Decorative', 'MedievalSharp', serif;
+  --hw-font-heading: 'Cinzel', serif;
+  --hw-font-body: 'Crimson Pro', serif;
+  --hw-font-code: 'Fira Code', monospace;
+  
+  --hw-solved-color: #10b981;
+  --hw-solved-glow: 0 0 20px rgba(16, 185, 129, 0.4);
+}
+
+/* Base & Body Background */
+body {
+  padding-top: 0 !important;
+  margin-top: 0 !important;
+  background-color: var(--hw-bg-deep) !important;
+  color: var(--hw-text-light) !important;
+  font-family: var(--hw-font-body);
+  font-size: 1.15rem;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  background-image: 
+    radial-gradient(circle at 50% 15%, rgba(30, 42, 82, 0.5) 0%, transparent 60%),
+    linear-gradient(180deg, rgba(5, 7, 15, 0.7) 0%, rgba(5, 7, 15, 0.95) 75%),
+    url('/themes/hogwarts/static/img/hogwarts_castle_bg.jpg');
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center top;
+}
+
+/* Background Starfield Canvas */
+#magical-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Main Content Wrapper - Note: Do NOT add position:relative or z-index here to avoid creating a stacking context that traps modals behind .modal-backdrop */
+main {
+  min-height: 80vh;
+  padding-top: 1.5rem;
+}
+
+/* Headings */
+h1, h2, h3, h4, .navbar-brand {
+  font-family: var(--hw-font-title);
+  color: var(--hw-gold-bright) !important;
+  letter-spacing: 1.5px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.8), 0 0 15px rgba(229, 193, 88, 0.3);
+}
+
+h5, h6 {
+  font-family: var(--hw-font-heading);
+  color: var(--hw-gold-main) !important;
+}
+
+/* Jumbotron */
+.jumbotron {
+  background: rgba(13, 19, 36, 0.75) !important;
+  border-bottom: 1px solid var(--hw-border-gold);
+  padding: 3rem 0 !important;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Form Controls & Inputs */
+.form-control, .form-select {
+  background: rgba(8, 12, 24, 0.85) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-code);
+  padding: 0.75rem 1rem !important;
+  border-radius: 6px !important;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--hw-gold-bright) !important;
+  box-shadow: var(--hw-gold-glow) !important;
+  outline: none !important;
+}
+
+.form-label, label {
+  font-family: var(--hw-font-heading);
+  color: var(--hw-gold-main) !important;
+  letter-spacing: 1px;
+}
+
+/* Buttons */
+.btn-primary {
+  background: linear-gradient(180deg, #e5c158 0%, #aa8628 100%) !important;
+  color: #05070f !important;
+  font-family: var(--hw-font-heading) !important;
+  font-weight: 700 !important;
+  letter-spacing: 1.5px;
+  border: 1px solid #ffe894 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(229, 193, 88, 0.3) !important;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+}
+
+.btn-primary:hover {
+  background: linear-gradient(180deg, #ffea8a 0%, #c49d32 100%) !important;
+  box-shadow: var(--hw-gold-glow-lg) !important;
+  transform: translateY(-2px);
+  color: #000 !important;
+}
+
+/* Cards & Parchment Panels */
+.card {
+  background: var(--hw-bg-card) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7) !important;
+  color: var(--hw-text-light) !important;
+}
+
+.card-header {
+  background: rgba(229, 193, 88, 0.1) !important;
+  border-bottom: 1px solid var(--hw-border-gold) !important;
+  font-family: var(--hw-font-heading);
+  color: var(--hw-gold-bright) !important;
+  font-weight: 700;
+}
+
+/* Navbar */
+.navbar {
+  position: sticky !important;
+  top: 0 !important;
+  z-index: 1030 !important;
+  background: rgba(8, 12, 24, 0.94) !important;
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--hw-border-gold);
+  box-shadow: 0 4px 25px rgba(0, 0, 0, 0.8), 0 0 15px rgba(229, 193, 88, 0.15);
+  padding: 0.75rem 1.5rem;
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  transition: all 0.3s ease;
+}
+
+.navbar-brand:hover {
+  text-shadow: var(--hw-gold-glow-lg);
+  transform: scale(1.02);
+}
+
+.navbar-brand img.ctf_logo {
+  height: 38px;
+  width: auto;
+  border-radius: 50%;
+  border: 1px solid var(--hw-gold-main);
+  box-shadow: 0 0 10px rgba(229, 193, 88, 0.5);
+}
+
+.nav-link {
+  font-family: var(--hw-font-heading);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--hw-text-muted) !important;
+  letter-spacing: 1px;
+  padding: 0.5rem 1rem !important;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.nav-link:hover, .nav-link.active {
+  color: var(--hw-gold-bright) !important;
+  text-shadow: 0 0 10px rgba(255, 224, 122, 0.6);
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--hw-gold-bright), transparent);
+  transition: all 0.3s ease;
+  transform: translateX(-50%);
+}
+
+.nav-link:hover::after, .nav-link.active::after {
+  width: 80%;
+}
+
+/* Audio Wand Button */
+.audio-wand-btn {
+  background: rgba(229, 193, 88, 0.12);
+  border: 1px solid var(--hw-border-gold);
+  color: var(--hw-gold-bright);
+  padding: 6px 14px;
+  border-radius: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--hw-font-heading);
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+}
+
+.audio-wand-btn:hover {
+  background: rgba(229, 193, 88, 0.25);
+  box-shadow: var(--hw-gold-glow);
+  transform: translateY(-1px);
+}
+
+.audio-wand-btn.playing {
+  border-color: var(--hw-gold-bright);
+  box-shadow: var(--hw-gold-glow);
+  color: #fff;
+}
+
+.audio-wand-btn.playing i {
+  animation: wandPulse 2s infinite alternate;
+}
+
+@keyframes wandPulse {
+  0% { transform: rotate(0deg); text-shadow: 0 0 5px var(--hw-gold-bright); }
+  50% { transform: rotate(15deg); text-shadow: 0 0 15px var(--hw-gold-bright); }
+  100% { transform: rotate(0deg); text-shadow: 0 0 5px var(--hw-gold-bright); }
+}
+
+/* Hero Section */
+.hogwarts-hero {
+  padding: 2.5rem 1.5rem 3rem;
+  text-align: center;
+  position: relative;
+}
+
+.hero-crest {
+  width: 130px;
+  height: 130px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--hw-gold-main);
+  box-shadow: var(--hw-gold-glow-lg), inset 0 0 15px rgba(229, 193, 88, 0.5);
+  overflow: hidden;
+  background: #000;
+  display: block;
+  animation: floatCrest 4s ease-in-out infinite;
+}
+
+.hero-crest img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+@keyframes floatCrest {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-8px); }
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: 900;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(180deg, #ffffff 10%, #ffe484 50%, #d4a737 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.9));
+}
+
+.hero-subtitle {
+  font-family: var(--hw-font-title);
+  font-size: 1.6rem;
+  color: #799fe3 !important;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+  margin-bottom: 1.2rem;
+  letter-spacing: 2px;
+}
+
+.hero-motto {
+  font-family: var(--hw-font-heading);
+  font-size: 1.35rem;
+  color: var(--hw-gold-bright);
+  letter-spacing: 3px;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+}
+
+.hero-submotto {
+  font-style: italic;
+  color: var(--hw-text-light);
+  font-size: 1.2rem;
+  margin-bottom: 1.8rem;
+}
+
+.hero-badge-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 15px;
+  background: rgba(13, 19, 36, 0.85);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 30px;
+  padding: 8px 24px;
+  color: var(--hw-gold-bright);
+  font-family: var(--hw-font-heading);
+  font-size: 1rem;
+  letter-spacing: 2px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5), inset 0 0 10px rgba(229, 193, 88, 0.2);
+}
+
+.hero-cta-group {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+/* Golden Ornate Buttons */
+.btn-hogwarts-gold {
+  background: linear-gradient(180deg, #e5c158 0%, #aa8628 100%) !important;
+  color: #070a12 !important;
+  font-family: var(--hw-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 1.5px !important;
+  padding: 12px 28px !important;
+  border-radius: 6px !important;
+  border: 1px solid #ffe894 !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6), 0 0 15px rgba(229, 193, 88, 0.4) !important;
+  text-transform: uppercase;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-hogwarts-gold:hover {
+  background: linear-gradient(180deg, #ffea8a 0%, #c49d32 100%) !important;
+  box-shadow: var(--hw-gold-glow-lg) !important;
+  transform: translateY(-3px) !important;
+  color: #000 !important;
+}
+
+.btn-hogwarts-outline {
+  background: rgba(13, 19, 36, 0.8) !important;
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: 1.05rem !important;
+  letter-spacing: 1.5px !important;
+  padding: 12px 28px !important;
+  border-radius: 6px !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5) !important;
+  text-transform: uppercase;
+  transition: all 0.3s ease !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.btn-hogwarts-outline:hover {
+  background: rgba(229, 193, 88, 0.15) !important;
+  border-color: var(--hw-gold-bright) !important;
+  box-shadow: var(--hw-gold-glow) !important;
+  transform: translateY(-3px) !important;
+}
+
+/* Divider Flourish */
+.magical-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 2rem 0;
+  color: var(--hw-gold-main);
+  opacity: 0.85;
+}
+
+.magical-divider::before, .magical-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 150px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--hw-gold-main), transparent);
+}
+
+.magical-divider span {
+  padding: 0 15px;
+  font-size: 1.2rem;
+  text-shadow: 0 0 10px var(--hw-gold-main);
+}
+
+/* Challenge Board & Categories */
+.category-header {
+  border-bottom: 1px solid var(--hw-border-gold);
+  padding-bottom: 0.75rem;
+  margin-top: 2rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.category-header h3 {
+  font-family: var(--hw-font-title);
+  font-size: 1.6rem;
+  color: var(--hw-gold-bright) !important;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.category-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(229, 193, 88, 0.15);
+  border: 1px solid var(--hw-border-gold);
+  color: var(--hw-gold-bright);
+  font-size: 1.1rem;
+  box-shadow: inset 0 0 8px rgba(229, 193, 88, 0.3);
+}
+
+/* Challenge Cards */
+.challenge-button {
+  background: var(--hw-bg-card) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  border-radius: 10px !important;
+  padding: 1.5rem 1rem !important;
+  transition: all 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), inset 0 0 15px rgba(229, 193, 88, 0.05) !important;
+  position: relative;
+  overflow: hidden;
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: center !important;
+  min-height: 140px;
+}
+
+.challenge-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--hw-gold-main), transparent);
+  opacity: 0.6;
+  transition: all 0.3s ease;
+}
+
+.challenge-button:hover {
+  background: var(--hw-bg-card-hover) !important;
+  border-color: var(--hw-border-gold-hover) !important;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8), var(--hw-gold-glow) !important;
+  transform: translateY(-5px) !important;
+}
+
+.challenge-button:hover::before {
+  opacity: 1;
+  background: linear-gradient(90deg, transparent, var(--hw-gold-bright), transparent);
+}
+
+.challenge-inner p {
+  font-family: var(--hw-font-heading);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--hw-text-light) !important;
+  margin-bottom: 0.6rem;
+  letter-spacing: 0.5px;
+}
+
+.challenge-inner span {
+  font-family: var(--hw-font-code);
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--hw-gold-bright) !important;
+  background: rgba(229, 193, 88, 0.15);
+  border: 1px solid rgba(229, 193, 88, 0.3);
+  padding: 3px 12px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* Solved Challenge State */
+.challenge-solved {
+  background: rgba(10, 35, 24, 0.9) !important;
+  border-color: var(--hw-solved-color) !important;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6), var(--hw-solved-glow) !important;
+}
+
+.challenge-solved::after {
+  content: '✦ SOLVED';
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  font-family: var(--hw-font-heading);
+  font-size: 0.65rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: var(--hw-solved-color);
+  color: #000;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+
+.challenge-solved .challenge-inner span {
+  color: #6ee7b7 !important;
+  background: rgba(16, 185, 129, 0.2);
+  border-color: var(--hw-solved-color);
+}
+
+/* ==========================================================================
+   Modal & Backdrop Layering & Challenge Grimoire Styling
+   ========================================================================== */
+.modal {
+  z-index: 1055 !important;
+}
+
+.modal-dialog {
+  z-index: 1060 !important;
+  position: relative !important;
+  max-width: 860px !important;
+  width: 92% !important;
+  margin: 3.5rem auto !important;
+}
+
+.modal-backdrop {
+  z-index: 1050 !important;
+  background-color: #03050a !important;
+  opacity: 0.75 !important;
+}
+
+.modal-content.hogwarts-grimoire-modal,
+.modal-content {
+  background: var(--hw-bg-modal) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  border-radius: 14px !important;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), var(--hw-gold-glow) !important;
+  color: var(--hw-text-light) !important;
+  position: relative !important;
+  z-index: 1065 !important;
+}
+
+.btn-close {
+  filter: invert(1) brightness(1.5) sepia(1) hue-rotate(5deg) saturate(5);
+  opacity: 0.85;
+}
+
+.btn-close:hover {
+  opacity: 1;
+}
+
+.nav-tabs {
+  border-bottom: 1px solid var(--hw-border-gold) !important;
+}
+
+.nav-tabs .nav-link {
+  color: var(--hw-text-muted) !important;
+  border: none !important;
+  border-bottom: 2px solid transparent !important;
+  font-family: var(--hw-font-heading);
+  font-size: 1rem;
+  letter-spacing: 1px;
+}
+
+.nav-tabs .nav-link.active {
+  background: transparent !important;
+  color: var(--hw-gold-bright) !important;
+  border-bottom: 2px solid var(--hw-gold-bright) !important;
+  text-shadow: 0 0 8px rgba(229, 193, 88, 0.4);
+}
+
+.challenge-header-section {
+  border-bottom: 1px solid rgba(229, 193, 88, 0.25);
+  padding-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.challenge-name {
+  font-family: var(--hw-font-title);
+  font-size: 2.1rem;
+  color: var(--hw-gold-bright) !important;
+  letter-spacing: 1px;
+  line-height: 1.3;
+}
+
+.challenge-points-pill {
+  background: rgba(229, 193, 88, 0.12);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 20px;
+  padding: 4px 18px;
+  margin-top: 0.5rem;
+}
+
+.challenge-value {
+  font-family: var(--hw-font-code);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--hw-gold-main) !important;
+  letter-spacing: 1px;
+}
+
+.challenge-tags .challenge-tag {
+  background: rgba(229, 193, 88, 0.15) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-heading);
+  letter-spacing: 1px;
+  font-size: 0.85rem;
+  padding: 4px 12px;
+  border-radius: 12px;
+  margin: 0 4px;
+}
+
+/* ==========================================================================
+   Grimoire Challenge Description & Typography
+   ========================================================================== */
+.challenge-desc {
+  font-family: var(--hw-font-body) !important;
+  font-size: 1.26rem !important;
+  line-height: 1.85 !important;
+  color: #f3eee3 !important;
+  display: block;
+  margin: 1.5rem 0;
+  background: rgba(4, 7, 18, 0.72) !important;
+  padding: 2.2rem 2.5rem !important;
+  border-radius: 12px !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  box-shadow: inset 0 0 30px rgba(0, 0, 0, 0.7) !important;
+}
+
+.challenge-desc p {
+  margin-bottom: 1.3rem;
+  color: #f3eee3;
+}
+
+.challenge-desc p:last-child {
+  margin-bottom: 0;
+}
+
+.challenge-desc h3, .challenge-desc h4 {
+  font-family: var(--hw-font-heading) !important;
+  color: var(--hw-gold-bright) !important;
+  font-size: 1.28rem !important;
+  letter-spacing: 1.5px !important;
+  margin-top: 1.8rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  border-bottom: 1px dashed rgba(229, 193, 88, 0.35);
+  padding-bottom: 0.5rem;
+}
+
+.challenge-desc ul {
+  list-style: none !important;
+  padding-left: 0 !important;
+  margin: 1.2rem 0 1.8rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.challenge-desc li {
+  background: rgba(229, 193, 88, 0.08) !important;
+  border: 1px solid rgba(229, 193, 88, 0.25) !important;
+  border-left: 4px solid var(--hw-gold-main) !important;
+  border-radius: 8px !important;
+  padding: 0.85rem 1.35rem !important;
+  font-size: 1.18rem !important;
+  color: #eae5d8 !important;
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 8px;
+  transition: all 0.2s ease;
+}
+
+.challenge-desc li:hover {
+  background: rgba(229, 193, 88, 0.16) !important;
+  border-color: var(--hw-gold-bright) !important;
+}
+
+.challenge-desc li strong {
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-heading) !important;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Incantation Objective Callout */
+.challenge-desc blockquote {
+  background: linear-gradient(135deg, rgba(229, 193, 88, 0.14) 0%, rgba(13, 22, 45, 0.95) 100%) !important;
+  border: 1px solid var(--hw-gold-main) !important;
+  border-left: 5px solid var(--hw-gold-bright) !important;
+  border-radius: 10px !important;
+  padding: 1.5rem 1.8rem !important;
+  margin: 1.8rem 0 0.5rem 0 !important;
+  color: #ffffff !important;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6), inset 0 0 20px rgba(229, 193, 88, 0.12) !important;
+  font-size: 1.22rem !important;
+  line-height: 1.75 !important;
+}
+
+.challenge-desc blockquote p {
+  margin-bottom: 0.5rem;
+}
+
+.challenge-desc blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.challenge-desc blockquote strong {
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-heading) !important;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+}
+
+/* KaTeX Math Styling */
+.katex {
+  font-size: 1.15em !important;
+  color: var(--hw-gold-bright) !important;
+  text-shadow: 0 0 10px rgba(229, 193, 88, 0.2);
+}
+
+.katex-display {
+  margin: 1.2rem 0 !important;
+  padding: 0.8rem !important;
+  background: rgba(5, 7, 15, 0.6) !important;
+  border-radius: 8px !important;
+  border: 1px solid rgba(229, 193, 88, 0.25) !important;
+  overflow-x: auto;
+}
+
+/* Form Input & Submission */
+.challenge-input {
+  background: rgba(5, 7, 15, 0.85) !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  color: var(--hw-gold-bright) !important;
+  font-family: var(--hw-font-code);
+  padding: 0.85rem 1.2rem !important;
+  border-radius: 6px !important;
+  font-size: 1.1rem !important;
+}
+
+.challenge-input:focus {
+  border-color: var(--hw-gold-bright) !important;
+  box-shadow: var(--hw-gold-glow) !important;
+  outline: none !important;
+}
+
+.challenge-submit {
+  font-size: 1.05rem !important;
+}
+
+/* Scoreboard */
+.table {
+  color: var(--hw-text-light) !important;
+  background: var(--hw-bg-card) !important;
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.table th {
+  background: rgba(229, 193, 88, 0.15) !important;
+  font-family: var(--hw-font-heading);
+  color: var(--hw-gold-bright) !important;
+  border-bottom: 2px solid var(--hw-border-gold) !important;
+  letter-spacing: 1px;
+}
+
+.table td {
+  border-color: rgba(229, 193, 88, 0.15) !important;
+  vertical-align: middle;
+}
+
+.table tbody tr:hover {
+  background: rgba(229, 193, 88, 0.08) !important;
+}
+
+/* Footer */
+footer.footer {
+  border-top: 1px solid var(--hw-border-gold);
+  background: rgba(5, 7, 15, 0.95);
+  padding: 1.5rem 0;
+  margin-top: 4rem;
+}
+
+.footer-motto {
+  font-family: var(--hw-font-heading);
+  color: var(--hw-gold-main);
+  letter-spacing: 2px;
+  font-size: 0.95rem;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--hw-bg-deep);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--hw-gold-muted);
+  border-radius: 5px;
+  border: 2px solid var(--hw-bg-deep);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--hw-gold-main);
+}
+
+/* ==========================================================================
+   MSC INPT & Event Portal Enhancements
+   ========================================================================== */
+.msc-hero-badge {
+  width: 140px;
+  height: 140px;
+  margin: 0 auto 1.5rem;
+  border-radius: 50%;
+  border: 2px solid var(--hw-gold-bright);
+  box-shadow: 0 0 25px rgba(0, 210, 255, 0.4), var(--hw-gold-glow-lg);
+  background: radial-gradient(circle, #0b172a 0%, #03060d 100%);
+  padding: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: floatCrest 4s ease-in-out infinite;
+}
+
+.msc-hero-badge img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+/* Discipline Grid */
+.discipline-card {
+  background: var(--hw-bg-card);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.6);
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.discipline-card:hover {
+  background: var(--hw-bg-card-hover);
+  border-color: var(--hw-gold-bright);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8), var(--hw-gold-glow);
+  transform: translateY(-4px);
+}
+
+.discipline-icon {
+  font-size: 2.2rem;
+  margin-bottom: 0.75rem;
+  display: block;
+}
+
+.discipline-title {
+  font-family: var(--hw-font-title);
+  font-size: 1.15rem;
+  color: var(--hw-gold-bright) !important;
+  margin-bottom: 0.5rem;
+}
+
+.discipline-desc {
+  font-size: 0.95rem;
+  color: var(--hw-text-muted);
+  line-height: 1.5;
+  margin-bottom: 0.8rem;
+}
+
+/* Timeline Cards */
+.timeline-card {
+  background: rgba(10, 16, 32, 0.85);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 10px;
+  padding: 1.5rem;
+  position: relative;
+  transition: all 0.3s ease;
+  height: 100%;
+}
+
+.timeline-card:hover {
+  border-color: var(--hw-gold-bright);
+  box-shadow: var(--hw-gold-glow);
+  transform: translateY(-3px);
+}
+
+.timeline-time {
+  font-family: var(--hw-font-code);
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--hw-gold-bright);
+  background: rgba(229, 193, 88, 0.15);
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  border: 1px solid rgba(229, 193, 88, 0.3);
+}
+
+.timeline-title {
+  font-family: var(--hw-font-heading);
+  font-size: 1.25rem;
+  color: #fff;
+  margin-bottom: 0.5rem;
+}
+
+/* The Four Houses Cards */
+.house-badge-card {
+  border-radius: 12px;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  transition: all 0.35s ease;
+  height: 100%;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+
+.house-gryffindor {
+  background: linear-gradient(135deg, rgba(80, 12, 12, 0.85) 0%, rgba(20, 5, 5, 0.95) 100%);
+  border: 1px solid #d93838;
+}
+.house-gryffindor:hover {
+  box-shadow: 0 0 25px rgba(217, 56, 56, 0.5);
+  transform: translateY(-4px);
+}
+
+.house-ravenclaw {
+  background: linear-gradient(135deg, rgba(12, 38, 80, 0.85) 0%, rgba(4, 12, 28, 0.95) 100%);
+  border: 1px solid #3882d9;
+}
+.house-ravenclaw:hover {
+  box-shadow: 0 0 25px rgba(56, 130, 217, 0.5);
+  transform: translateY(-4px);
+}
+
+.house-hufflepuff {
+  background: linear-gradient(135deg, rgba(70, 55, 15, 0.85) 0%, rgba(25, 20, 5, 0.95) 100%);
+  border: 1px solid #d9a838;
+}
+.house-hufflepuff:hover {
+  box-shadow: 0 0 25px rgba(217, 168, 56, 0.5);
+  transform: translateY(-4px);
+}
+
+.house-slytherin {
+  background: linear-gradient(135deg, rgba(10, 55, 30, 0.85) 0%, rgba(3, 20, 10, 0.95) 100%);
+  border: 1px solid #2ea060;
+}
+.house-slytherin:hover {
+  box-shadow: 0 0 25px rgba(46, 160, 96, 0.5);
+  transform: translateY(-4px);
+}
+
+.house-icon {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.house-name {
+  font-family: var(--hw-font-title);
+  font-size: 1.35rem;
+  letter-spacing: 1px;
+  margin-bottom: 0.4rem;
+  color: #fff;
+}
+
+.house-traits {
+  font-family: var(--hw-font-heading);
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+  color: var(--hw-gold-bright);
+}
+
+/* MSC Pillar & Achievement Cards */
+.pillar-card {
+  background: rgba(13, 20, 38, 0.9);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 12px;
+  padding: 1.75rem;
+  height: 100%;
+  transition: all 0.3s ease;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.6);
+}
+
+.pillar-card:hover {
+  border-color: var(--hw-gold-bright);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.8), var(--hw-gold-glow);
+  transform: translateY(-3px);
+}
+
+.pillar-icon-box {
+  width: 52px;
+  height: 52px;
+  border-radius: 10px;
+  background: rgba(229, 193, 88, 0.15);
+  border: 1px solid var(--hw-gold-main);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  color: var(--hw-gold-bright);
+  margin-bottom: 1.25rem;
+}
+
+.achievement-card {
+  background: linear-gradient(135deg, rgba(16, 26, 52, 0.95) 0%, rgba(9, 14, 28, 0.95) 100%);
+  border: 1px solid var(--hw-border-gold);
+  border-radius: 12px;
+  padding: 2rem;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.7);
+}
+
+.achievement-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 5px;
+  height: 100%;
+  background: var(--hw-gold-bright);
+}
+
+.achievement-badge-pill {
+  background: rgba(229, 193, 88, 0.2);
+  border: 1px solid var(--hw-gold-main);
+  color: var(--hw-gold-bright);
+  font-family: var(--hw-font-heading);
+  font-weight: 700;
+  font-size: 0.8rem;
+  padding: 4px 12px;
+  border-radius: 20px;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  letter-spacing: 1px;
+}
+
+/* ==========================================================================
+   Streamlined & Compact Top Navbar
+   ========================================================================== */
+.navbar {
+  padding: 0.45rem 1.25rem !important;
+  background: rgba(6, 10, 20, 0.96) !important;
+  border-bottom: 1px solid rgba(229, 193, 88, 0.25) !important;
+}
+
+.navbar-brand {
+  font-size: 1.15rem !important;
+  gap: 8px !important;
+  letter-spacing: 1px;
+}
+
+.navbar-brand img.ctf_logo {
+  height: 32px !important;
+}
+
+.nav-link {
+  font-size: 0.86rem !important;
+  font-weight: 600;
+  letter-spacing: 0.8px;
+  padding: 0.35rem 0.65rem !important;
+  white-space: nowrap !important;
+}
+
+.nav-link i {
+  font-size: 0.85rem;
+}
+
+.audio-wand-btn {
+  padding: 4px 10px !important;
+  font-size: 0.78rem !important;
+  border-radius: 16px !important;
+}
+
+.dropdown-menu {
+  background: #091020 !important;
+  border: 1px solid var(--hw-border-gold) !important;
+  border-radius: 8px !important;
+  padding: 0.4rem 0 !important;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.9) !important;
+}
+
+.dropdown-item {
+  font-family: var(--hw-font-heading) !important;
+  font-size: 0.86rem !important;
+  letter-spacing: 0.7px !important;
+  padding: 0.45rem 1.2rem !important;
+  transition: all 0.2s ease;
+}
+
+.dropdown-item:hover {
+  background: rgba(229, 193, 88, 0.15) !important;
+  color: var(--hw-gold-bright) !important;
+}
+
+/* Recruitment Hero Elements */
+.recruit-badge-pill {
+  background: linear-gradient(90deg, rgba(229,193,88,0.2) 0%, rgba(0,210,255,0.2) 100%);
+  border: 1px solid var(--hw-gold-bright);
+  color: var(--hw-gold-bright);
+  font-family: var(--hw-font-heading);
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 6px 18px;
+  border-radius: 20px;
+  display: inline-block;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+}
+
+/* MSC Avatar & Clean Card Styles */
+.msc-avatar-wrap {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+}
+
+.msc-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 2px solid var(--hw-border-gold);
+  box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+}

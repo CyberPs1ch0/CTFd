@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>{{ title or Configs.ctf_name }}</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="shortcut icon" href="/themes/hogwarts/static/img/hogwarts_crest.jpg" type="image/x-icon">
+
+  {{ meta | safe }}
+
+  {% block stylesheets %}
+    {{ Assets.css("assets/scss/main.scss") }}
+    <link rel="stylesheet" href="/themes/hogwarts/static/css/hogwarts.css">
+    <!-- KaTeX math rendering -->
+    <link rel="stylesheet" href="/themes/hogwarts/static/vendor/katex/katex.min.css">
+  {% endblock %}
+
+  {{ Plugins.styles }}
+
+  {{ Assets.js("assets/js/color_mode_switcher.js", type=None) }}
+
+  <script type="text/javascript">
+      window.init = {
+          'urlRoot': "{{ request.script_root }}",
+          'csrfNonce': "{{ Session.nonce }}",
+          'userMode': "{{ Configs.user_mode }}",
+          'userId': {{ Session.id }},
+          'userName': {{ User.name | tojson }},
+          'userEmail': {{ User.email | tojson }},
+          'userVerified': {{ User.verified | tojson }},
+          'teamId': {{ Team.id | tojson }},
+          'teamName': {{ Team.name | tojson }},
+          'start': {{ Configs.start | tojson }},
+          'end': {{ Configs.end | tojson }},
+          'themeSettings': {{ Configs.theme_settings | tojson }},
+          'eventSounds': [
+            "/themes/core/static/sounds/notification.webm",
+            "/themes/core/static/sounds/notification.mp3",
+          ],
+      }
+  </script>
+
+  {{ Configs.theme_header }}
+</head>
+<body>
+{% include "components/navbar.html" %}
+
+<main role="main">
+  {% block content %}
+  {% endblock %}
+</main>
+
+{% include "components/snackbar.html" %}
+
+<footer class="footer">
+  <div class="container text-center">
+    <div class="magical-divider my-2">
+      <span>✦ ✦ ✦</span>
+    </div>
+    <p class="footer-motto mb-1">MSC DARES THE BEST — Come put your courage to the test</p>
+    <small class="text-muted">
+      30 SEPT ✦ AMPHI E1 ✦ 8:30 &nbsp;|&nbsp; Hogwarts: Hidden Formula CTF
+    </small>
+  </div>
+</footer>
+
+{% include "components/notifications.html" %}
+
+<!-- Core KaTeX & Hogwarts FX Engines (Always loaded across all pages) -->
+<script src="/themes/hogwarts/static/vendor/katex/katex.min.js"></script>
+<script src="/themes/hogwarts/static/vendor/katex/auto-render.min.js"></script>
+<script src="/themes/hogwarts/static/js/hogwarts.js"></script>
+
+{% block scripts %}
+  {{ Assets.js("assets/js/page.js") }}
+{% endblock %}
+
+{{ Plugins.scripts }}
+
+{{ Configs.theme_footer }}
+</body>
+</html>

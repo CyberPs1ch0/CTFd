@@ -1,0 +1,447 @@
+{% extends "base.html" %}
+
+{% block content %}
+  {% if route == 'about' or title == 'About MSC' or title == 'About Math & Science Club | INPT' or request.path == '/about' %}
+    <!-- ===================================================================
+         ABOUT PAGE: MATH & SCIENCE CLUB (INPT)
+         =================================================================== -->
+    <div class="container py-5">
+      <!-- Club Header -->
+      <div class="text-center mb-5">
+        <div class="msc-avatar-wrap mb-4">
+          <img src="/themes/hogwarts/static/img/msc-logo.jpeg" alt="Math & Science Club Logo" class="msc-avatar-img">
+        </div>
+
+        <h1 class="hero-title" style="font-size: 2.8rem; letter-spacing: 1px;">Math &amp; Science Club</h1>
+        <p class="text-gold" style="font-family: var(--hw-font-heading); font-size: 1.1rem; letter-spacing: 1.5px;">
+          INPT &bull; Institut National des Postes et T&eacute;l&eacute;communications &bull; Rabat
+        </p>
+
+        <div class="magical-divider my-4"></div>
+      </div>
+
+      <!-- Overview Section -->
+      <div class="row g-4 mb-5 align-items-center">
+        <div class="col-lg-7">
+          <div class="p-4 p-md-5" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+            <h3 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.6rem;" class="mb-3">
+              <i class="fas fa-compass pe-2 text-gold"></i> Who We Are
+            </h3>
+            <p class="text-light" style="font-size: 1.05rem; line-height: 1.8;">
+              The <strong>Math &amp; Science Club (MSC)</strong> is an academic student club at <strong>INPT Rabat</strong>. We are a community of engineering students who enjoy exploring mathematics, theoretical physics, computer science, and competitive problem solving.
+            </p>
+            <p class="text-light" style="font-size: 1.05rem; line-height: 1.8;">
+              Throughout the academic year, MSC organizes campus events, technical workshops, cryptography challenges, and national competition teams. Whether you are already experienced in competitive problem solving or simply curious to learn more, our club is open to everyone.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4">
+              <a href="https://www.instagram.com/msc_inpt/" target="_blank" class="btn-hogwarts-gold text-decoration-none">
+                <i class="fab fa-instagram pe-1"></i> Follow @msc_inpt on Instagram
+              </a>
+              <a href="{{ url_for('challenges.listing') }}" class="btn-hogwarts-outline text-decoration-none">
+                <i class="fas fa-list-check pe-1"></i> Browse CTF Challenges
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-5">
+          <div class="p-4 text-center" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+            <img src="/themes/hogwarts/static/img/msc-logo.jpeg" alt="MSC Emblem" class="img-fluid rounded-circle mb-3" style="max-width: 200px; border: 2px solid var(--hw-border-gold);">
+            <h5 class="text-gold mb-1" style="font-family: var(--hw-font-heading); letter-spacing: 1px;">Open to All INPT Students</h5>
+            <p class="text-muted small mb-0" style="line-height: 1.6;">
+              No special background or prior experience needed.<br>Curiosity and interest in problem solving are all you need.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus Areas: Everything is Science -->
+      <div class="mb-5">
+        <div class="text-center mb-4">
+          <h2 class="hero-title" style="font-size: 2.1rem;">What We Focus On</h2>
+          <p class="text-muted">Core topics and activities explored within the club</p>
+        </div>
+
+        <!-- Reassurance Banner: Everything is Science -->
+        <div class="p-4 mb-4" style="background: rgba(10, 16, 32, 0.9); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+          <div class="row align-items-center g-3">
+            <div class="col-auto">
+              <div class="d-flex align-items-center justify-content-center rounded-circle" style="width: 50px; height: 50px; background: rgba(229,193,88,0.15); border: 1px solid var(--hw-border-gold);">
+                <i class="fas fa-lightbulb text-gold fs-4"></i>
+              </div>
+            </div>
+            <div class="col">
+              <h4 class="mb-1" style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.25rem;">
+                Science Isn't Just Blackboard Formulas &mdash; Everything You Love in Tech Is Science
+              </h4>
+              <p class="text-light small mb-0" style="line-height: 1.7;">
+                Many incoming students hear &ldquo;Math &amp; Science&rdquo; and worry that it means only abstract theorems or endless equations. That couldn't be further from reality: <strong>Cybersecurity, ethical hacking, and cryptography are pure applied science.</strong> Writing algorithms, training AI, reverse-engineering protocols, and modeling physics in code &mdash; it is all science. If you love solving puzzles, understanding how systems work, or building tech, you belong here.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="row g-4">
+          <!-- Pillar 1: Cybersecurity & Cryptography -->
+          <div class="col-md-6 col-lg-3">
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i class="fas fa-shield-halved"></i>
+              </div>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.2rem;">Cybersecurity &amp; Crypto</h4>
+              <p class="text-light small" style="line-height: 1.6;">
+                Cybersecurity is science in defense. We explore classical ciphers, steganography, hashing, network protocols, and puzzle investigations like Cicada 3301.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 2: Algorithms & Software -->
+          <div class="col-md-6 col-lg-3">
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i class="fas fa-laptop-code"></i>
+              </div>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.2rem;">Algorithms &amp; Code</h4>
+              <p class="text-light small" style="line-height: 1.6;">
+                Computer science in action. State machines, graph theory, algorithmic problem-solving, and building practical code to solve complex logic challenges.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 3: Artificial Intelligence -->
+          <div class="col-md-6 col-lg-3">
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i class="fas fa-brain"></i>
+              </div>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.2rem;">Artificial Intelligence</h4>
+              <p class="text-light small" style="line-height: 1.6;">
+                Neural networks, cognitive models, and modern machine learning. Debating and building intelligent systems, as showcased in our NEXUS symposium.
+              </p>
+            </div>
+          </div>
+
+          <!-- Pillar 4: Mathematics & Modeling -->
+          <div class="col-md-6 col-lg-3">
+            <div class="pillar-card">
+              <div class="pillar-icon-box">
+                <i class="fas fa-square-root-variable"></i>
+              </div>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.2rem;">Math &amp; Physics</h4>
+              <p class="text-light small" style="line-height: 1.6;">
+                The underlying foundation of engineering. Combinatorics, number theory, kinematics, and physical intuition explored through interactive apparatus and experiments.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Past Events & Distinctions -->
+      <div class="mb-5">
+        <div class="text-center mb-4">
+          <h2 class="hero-title" style="font-size: 2.1rem;">Past Events &amp; Activities</h2>
+          <p class="text-muted">Highlights from recent MSC initiatives at INPT</p>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="achievement-card">
+              <span class="achievement-badge-pill">COMPETITION</span>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading);" class="mb-2">
+                Moroccan Day of Mathematics &mdash; 1st Place
+              </h4>
+              <p class="text-gold small mb-2">Award: Best Stand (Invariance Principle) &bull; 4,000 DH Award</p>
+              <p class="text-light small" style="line-height: 1.7;">
+                Representing INPT in a nationwide event, MSC presented an interactive mathematical demonstration on invariance principles, earning first place among participating engineering schools.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="achievement-card">
+              <span class="achievement-badge-pill">CONFERENCE</span>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading);" class="mb-2">
+                NEXUS: AI &amp; Human Behavior
+              </h4>
+              <p class="text-gold small mb-2">Amphi Zlafa, INPT</p>
+              <p class="text-light small" style="line-height: 1.7;">
+                A student-led scientific symposium bringing together researchers and engineering students to discuss the intersection of machine learning, cognitive sciences, and societal impact.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="achievement-card">
+              <span class="achievement-badge-pill">PUZZLE HUNT</span>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading);" class="mb-2">
+                Cicada 3301 Investigation
+              </h4>
+              <p class="text-gold small mb-2">Campus Cryptanalysis Event</p>
+              <p class="text-light small" style="line-height: 1.7;">
+                A multi-stage ARG puzzle organized across the INPT campus, featuring cryptographic ciphers, steganographic media, and hidden on-campus clues.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="achievement-card">
+              <span class="achievement-badge-pill">WELCOME EVENT</span>
+              <h4 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading);" class="mb-2">
+                Hogwarts: Hidden Formula CTF
+              </h4>
+              <p class="text-gold small mb-2">30 September &bull; Amphi E1, INPT</p>
+              <p class="text-light small" style="line-height: 1.7;">
+                Our annual semester-opening competition designed to welcome incoming INPT students through 30 themed mathematical, logical, and cryptographic challenges.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Follow Card -->
+      <div class="p-4 p-md-5 text-center" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+        <h3 class="hero-title mb-2" style="font-size: 2rem;">Stay Connected</h3>
+        <p class="text-light mb-4" style="max-width: 600px; margin: 0 auto; line-height: 1.7;">
+          Follow our Instagram page to stay updated on upcoming workshops, club meetups, and campus events.
+        </p>
+        <a href="https://www.instagram.com/msc_inpt/" target="_blank" class="btn-hogwarts-gold text-decoration-none px-4 py-2">
+          <i class="fab fa-instagram pe-1"></i> @msc_inpt on Instagram
+        </a>
+      </div>
+    </div>
+
+  {% elif route == 'index' or not title or title == 'Hogwarts: Hidden Formula' or request.path == '/' or title == 'Hogwarts MSC' or title == 'Home' %}
+    <!-- ===================================================================
+         CLEAN EVENT LANDING PAGE (/): HOGWARTS HIDDEN FORMULA
+         =================================================================== -->
+    <div class="py-5">
+      <!-- Clean Hero Section -->
+      <div class="container text-center mb-5">
+        <div class="mb-3">
+          <img
+              src="/themes/hogwarts/static/img/hogwarts_crest.jpg"
+              alt="Hogwarts Crest"
+              style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--hw-border-gold); object-fit: cover;"
+          >
+        </div>
+
+        <h1 class="hero-title" style="font-size: 3rem; letter-spacing: 1.5px; margin-bottom: 0.25rem;">
+          Hogwarts: Hidden Formula
+        </h1>
+        <p class="text-gold" style="font-family: var(--hw-font-heading); font-size: 1.15rem; letter-spacing: 1px;">
+          A Math &amp; Logic CTF Organized by Math &amp; Science Club (INPT)
+        </p>
+
+        <!-- Date & Location Badge -->
+        <div class="d-inline-flex align-items-center gap-3 px-3 py-2 my-3 rounded-pill" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); font-size: 0.95rem; color: var(--hw-gold-bright);">
+          <span><i class="fas fa-calendar-day pe-1 text-gold"></i> 30 September</span>
+          <span class="text-muted">&bull;</span>
+          <span><i class="fas fa-clock pe-1 text-gold"></i> 08:30 AM</span>
+          <span class="text-muted">&bull;</span>
+          <span><i class="fas fa-location-dot pe-1 text-gold"></i> Amphi E1, INPT</span>
+        </div>
+
+        <!-- Primary Action Buttons -->
+        <div class="d-flex justify-content-center flex-wrap gap-3 mt-4">
+          <a href="{{ url_for('challenges.listing') }}" class="btn-hogwarts-gold text-decoration-none">
+            <i class="fas fa-list-check pe-1"></i> View Challenges
+          </a>
+          <a href="{{ url_for('scoreboard.listing') }}" class="btn-hogwarts-outline text-decoration-none">
+            <i class="fas fa-trophy pe-1"></i> Live Scoreboard
+          </a>
+          <a href="/about" class="btn-hogwarts-outline text-decoration-none">
+            <i class="fas fa-circle-info pe-1"></i> About the Club
+          </a>
+        </div>
+      </div>
+
+      <div class="magical-divider my-5"></div>
+
+      <!-- Welcome / Introduction -->
+      <div class="container mb-5">
+        <div class="row justify-content-center">
+          <div class="col-lg-10">
+            <div class="p-4 p-md-5" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+              <h2 class="hero-title mb-3" style="font-size: 1.8rem;">
+                <i class="fas fa-graduation-cap pe-2 text-gold"></i> Welcome to INPT
+              </h2>
+              <p class="text-light" style="font-size: 1.05rem; line-height: 1.8;">
+                To welcome newly enrolled students to INPT, the <strong>Math &amp; Science Club</strong> has put together <em>Hogwarts: Hidden Formula</em> &mdash; a problem-solving challenge blending mathematics, logic riddles, cybersecurity ciphers, and algorithmic thinking with a Harry Potter theme.
+              </p>
+              <p class="text-light mb-0" style="font-size: 1.05rem; line-height: 1.8;">
+                Whether you enjoy pure math, cybersecurity, code, or analytical puzzles, you will find challenges to solve. There are no prerequisites: curiosity, teamwork, and persistence are all you need to get started.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Event Key Features -->
+      <div class="container mb-5">
+        <div class="row g-4">
+          <div class="col-md-4">
+            <div class="p-4 h-100" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 d-flex align-items-center justify-content-center rounded" style="width: 44px; height: 44px; background: rgba(229,193,88,0.15); border: 1px solid var(--hw-border-gold);">
+                  <i class="fas fa-puzzle-piece text-gold fs-5"></i>
+                </div>
+                <h4 class="mb-0" style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.25rem;">30 Challenges</h4>
+              </div>
+              <p class="text-light small mb-0" style="line-height: 1.7;">
+                Problems range from elementary calculations, state sequences, and geometry to number theory, discrete math, and ciphers. Each challenge provides clear instructions on the expected answer format.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4 h-100" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 d-flex align-items-center justify-content-center rounded" style="width: 44px; height: 44px; background: rgba(229,193,88,0.15); border: 1px solid var(--hw-border-gold);">
+                  <i class="fas fa-chart-line text-gold fs-5"></i>
+                </div>
+                <h4 class="mb-0" style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.25rem;">Dynamic Scoring</h4>
+              </div>
+              <p class="text-light small mb-0" style="line-height: 1.7;">
+                Challenges start with maximum points and decrease in value as more participants solve them. Solving rarer or harder problems yields higher final rankings on the board.
+              </p>
+            </div>
+          </div>
+
+          <div class="col-md-4">
+            <div class="p-4 h-100" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+              <div class="d-flex align-items-center mb-3">
+                <div class="me-3 d-flex align-items-center justify-content-center rounded" style="width: 44px; height: 44px; background: rgba(229,193,88,0.15); border: 1px solid var(--hw-border-gold);">
+                  <i class="fas fa-shield-halved text-gold fs-5"></i>
+                </div>
+                <h4 class="mb-0" style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.25rem;">The Four Houses</h4>
+              </div>
+              <p class="text-light small mb-0" style="line-height: 1.7;">
+                Participants compete under Gryffindor, Ravenclaw, Hufflepuff, or Slytherin. Every accepted answer adds points to your house score in real time.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Schedule Section -->
+      <div class="container mb-5">
+        <div class="text-center mb-4">
+          <h2 class="hero-title" style="font-size: 2rem;">Event Schedule</h2>
+          <p class="text-muted">Plan for the competition day &bull; 30 September at Amphi E1</p>
+        </div>
+
+        <div class="row g-3">
+          <div class="col-md-6 col-lg-3">
+            <div class="p-3 h-100" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 10px;">
+              <div class="badge bg-dark text-gold border border-warning mb-2" style="font-size: 0.85rem;">08:30 AM</div>
+              <h5 class="text-light mb-1" style="font-size: 1.05rem;">Welcome &amp; Briefing</h5>
+              <p class="text-muted small mb-0">Gathering at Amphi E1. Platform orientation and quick walkthrough of rules.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="p-3 h-100" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 10px;">
+              <div class="badge bg-dark text-gold border border-warning mb-2" style="font-size: 0.85rem;">09:00 AM</div>
+              <h5 class="text-light mb-1" style="font-size: 1.05rem;">Challenges Open</h5>
+              <p class="text-muted small mb-0">All 30 challenges unlock simultaneously. Live leaderboard goes active.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="p-3 h-100" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 10px;">
+              <div class="badge bg-dark text-gold border border-warning mb-2" style="font-size: 0.85rem;">01:00 PM</div>
+              <h5 class="text-light mb-1" style="font-size: 1.05rem;">Scoreboard Freeze</h5>
+              <p class="text-muted small mb-0">The public scoreboard freezes for the final stretch of submissions.</p>
+            </div>
+          </div>
+
+          <div class="col-md-6 col-lg-3">
+            <div class="p-3 h-100" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 10px;">
+              <div class="badge bg-dark text-gold border border-warning mb-2" style="font-size: 0.85rem;">02:00 PM</div>
+              <h5 class="text-light mb-1" style="font-size: 1.05rem;">Results &amp; Closing</h5>
+              <p class="text-muted small mb-0">Final results announced, house standings revealed, and closing celebration.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Participation Tips -->
+      <div class="container mb-5">
+        <div class="p-4" style="background: rgba(10, 16, 32, 0.85); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+          <h4 class="mb-3" style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.3rem;">
+            <i class="fas fa-circle-check pe-2 text-gold"></i> Quick Tips for Participants
+          </h4>
+          <div class="row g-3">
+            <div class="col-md-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-pen-ruler text-gold mt-1 me-2"></i>
+                <div class="small text-light"><strong>Format Matters:</strong> Check each challenge text for expected formatting (integer, fraction, simplified expression).</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-calculator text-gold mt-1 me-2"></i>
+                <div class="small text-light"><strong>Scratchpad &amp; Code:</strong> Feel free to use pencil, paper, calculators, or quick Python scripts to solve equations.</div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="d-flex align-items-start">
+                <i class="fas fa-comments text-gold mt-1 me-2"></i>
+                <div class="small text-light"><strong>Ask Organizers:</strong> If you run into issues with the platform, MSC members at Amphi E1 are here to help.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Organizer Card -->
+      <div class="container">
+        <div class="p-4 p-md-5" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+          <div class="row align-items-center g-4">
+            <div class="col-md-3 text-center">
+              <img
+                  src="/themes/hogwarts/static/img/msc-logo.jpeg"
+                  alt="Math & Science Club Logo"
+                  style="width: 110px; height: 110px; border-radius: 50%; border: 2px solid var(--hw-border-gold); object-fit: cover;"
+              >
+              <h5 class="text-gold mt-2 mb-0" style="font-family: var(--hw-font-heading); font-size: 1.1rem;">MSC INPT</h5>
+              <small class="text-muted">Math &amp; Science Club</small>
+            </div>
+            <div class="col-md-9">
+              <h3 style="color: var(--hw-gold-bright); font-family: var(--hw-font-heading); font-size: 1.5rem;" class="mb-2">
+                Organized by Math &amp; Science Club (INPT)
+              </h3>
+              <p class="text-light small mb-3" style="line-height: 1.7;">
+                MSC is an academic student club at the Institut National des Postes et T&eacute;l&eacute;communications (Rabat). We organize competitions, academic workshops, and national event delegations. We hope you enjoy this welcome CTF!
+              </p>
+              <div class="d-flex flex-wrap gap-2">
+                <a href="/about" class="btn-hogwarts-outline text-decoration-none btn-sm">
+                  <i class="fas fa-circle-info pe-1"></i> Learn More About MSC
+                </a>
+                <a href="https://www.instagram.com/msc_inpt/" target="_blank" class="btn-hogwarts-gold text-decoration-none btn-sm">
+                  <i class="fab fa-instagram pe-1"></i> Follow @msc_inpt
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  {% else %}
+    <!-- Generic Fallback Page -->
+    <div class="container py-5">
+      <div class="p-5" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px; box-shadow: 0 10px 30px rgba(0,0,0,0.7);">
+        <h2 class="hero-title mb-4" style="font-size: 2.4rem;">{{ title }}</h2>
+        <div class="magical-divider mb-4"></div>
+        <div class="text-light" style="font-size: 1.15rem; line-height: 1.8;">
+          {{ content | safe }}
+        </div>
+      </div>
+    </div>
+  {% endif %}
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/page.js") }}
+{% endblock %}

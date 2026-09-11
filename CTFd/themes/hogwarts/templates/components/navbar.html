@@ -1,0 +1,139 @@
+<nav class="navbar navbar-expand-lg navbar-dark sticky-top">
+  <div class="container-fluid px-lg-4">
+    <a href="{{ url_for('views.static_html', route='/') }}" class="navbar-brand d-flex align-items-center">
+      <img
+          class="img-responsive ctf_logo me-2"
+          src="/themes/hogwarts/static/img/hogwarts_crest.jpg"
+          alt="Hogwarts Seal"
+          height="34"
+      >
+      <span class="brand-text">{{ Configs.ctf_name or 'Hogwarts: Hidden Formula' }}</span>
+    </a>
+
+    <button
+        class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#base-navbars"
+        aria-controls="base-navbars" aria-expanded="false" aria-label="Toggle navigation"
+    >
+      <i class="fas fa-bars text-gold"></i>
+    </button>
+
+    <div class="collapse navbar-collapse" id="base-navbars">
+      <!-- Main Navigation (Left) -->
+      <ul class="navbar-nav me-auto align-items-lg-center">
+        <li class="nav-item">
+          <a class="nav-link" href="{{ url_for('challenges.listing') }}">
+            <i class="fas fa-book-skull pe-1"></i> Spellbook
+          </a>
+        </li>
+
+        {% if Configs.account_visibility != 'admins' and Configs.score_visibility != 'admins' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('scoreboard.listing') }}">
+              <i class="fas fa-trophy pe-1"></i> House Cup
+            </a>
+          </li>
+        {% endif %}
+
+        {% if Configs.account_visibility != 'admins' and Configs.user_mode == 'teams' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('teams.listing') }}">
+              <i class="fas fa-shield-halved pe-1"></i> Houses
+            </a>
+          </li>
+        {% endif %}
+
+        {% if Configs.account_visibility != 'admins' %}
+          <li class="nav-item">
+            <a class="nav-link" href="{{ url_for('users.listing') }}">
+              <i class="fas fa-hat-wizard pe-1"></i> Wizards
+            </a>
+          </li>
+        {% endif %}
+
+        <li class="nav-item">
+          <a class="nav-link" href="/about">
+            <i class="fas fa-atom pe-1"></i> About MSC
+          </a>
+        </li>
+      </ul>
+
+      <!-- Action & Profile Navigation (Right) -->
+      <ul class="navbar-nav ms-auto align-items-lg-center gap-1">
+        <!-- Lumos Ambient Sound Toggle -->
+        <li class="nav-item me-lg-2 my-1 my-lg-0">
+          <button id="hogwarts-wand-audio-toggle" class="audio-wand-btn" type="button" title="Toggle Magical Ambient Soundscape">
+            <i class="fas fa-wand-magic-sparkles"></i>
+            <span>Lumos Sound</span>
+          </button>
+        </li>
+
+        {% if authed() %}
+          <!-- Owl Post (Notifications) -->
+          <li class="nav-item my-1 my-lg-0">
+            <a class="nav-link position-relative px-2" href="{{ url_for('views.notifications') }}" title="Owl Post (Notifications)">
+              <i class="fas fa-scroll"></i>
+              <span class="d-lg-none ms-1">Owl Post</span>
+              <span x-data x-show="$store.unread_count > 0" x-text="$store.unread_count" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;"></span>
+            </a>
+          </li>
+
+          <!-- User Wizard Dropdown -->
+          <li class="nav-item dropdown my-1 my-lg-0">
+            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarWizardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-user-circle pe-1 text-gold"></i>
+              <span class="wizard-username">{{ User.name }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarWizardDropdown" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); min-width: 200px;">
+              <li>
+                <a class="dropdown-item text-light py-2" href="{{ url_for('users.private') }}">
+                  <i class="fas fa-id-badge pe-2 text-gold"></i> Wizard Profile
+                </a>
+              </li>
+              {% if Configs.user_mode == "teams" %}
+                <li>
+                  <a class="dropdown-item text-light py-2" href="{{ url_for('teams.private') }}">
+                    <i class="fas fa-shield-halved pe-2 text-gold"></i> My House
+                  </a>
+                </li>
+              {% endif %}
+              {% if is_admin() %}
+                <li><hr class="dropdown-divider" style="border-color: rgba(229,193,88,0.25);"></li>
+                <li>
+                  <a class="dropdown-item text-gold py-2" href="{{ url_for('admin.view') }}">
+                    <i class="fas fa-wand-magic pe-2"></i> Headmaster Panel
+                  </a>
+                </li>
+              {% endif %}
+              <li><hr class="dropdown-divider" style="border-color: rgba(229,193,88,0.25);"></li>
+              <li>
+                <a class="dropdown-item text-light py-2" href="{{ url_for('views.settings') }}">
+                  <i class="fas fa-cogs pe-2 text-muted"></i> Chamber Settings
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item text-danger py-2" href="{{ url_for('auth.logout') }}">
+                  <i class="fas fa-arrow-right-from-bracket pe-2"></i> Leave Chamber
+                </a>
+              </li>
+            </ul>
+          </li>
+
+        {% else %}
+          {% if registration_visible() %}
+            <li class="nav-item">
+              <a class="nav-link" href="{{ url_for('auth.register') }}">
+                <i class="fas fa-user-plus pe-1"></i> Enroll Wizard
+              </a>
+            </li>
+          {% endif %}
+
+          <li class="nav-item">
+            <a class="nav-link btn-enter-chamber" href="{{ url_for('auth.login') }}">
+              <i class="fas fa-arrow-right-to-bracket pe-1"></i> Enter Chamber
+            </a>
+          </li>
+        {% endif %}
+      </ul>
+    </div>
+  </div>
+</nav>

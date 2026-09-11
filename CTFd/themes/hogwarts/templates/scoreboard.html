@@ -1,0 +1,96 @@
+{% extends "base.html" %}
+
+{% block content %}
+  <div class="container pt-4 pb-2">
+    <div class="text-center mb-4">
+      <h1 class="hero-title" style="font-size: 2.8rem;">The House Cup</h1>
+      <p class="hero-submotto">Live enchantment scores of the Great Hall</p>
+      <div class="magical-divider">
+        <span>✦ ✦ ✦</span>
+      </div>
+    </div>
+
+    {% include "components/errors.html" %}
+
+    <div id="score-graph" class="align-items-center mb-4" :class="{'d-flex': show, 'd-none': !show}" x-data="ScoreboardDetail" x-ref="scoregraph" @bracket-change.window="activeBracket=$event.detail; update();">
+      <div class="col-md-12 text-center py-4">
+        <i class="fas fa-circle-notch fa-spin fa-3x fa-fw" style="color: var(--hw-gold-bright);"></i>
+      </div>
+    </div>
+
+    <div id="scoreboard" class="row" x-data="ScoreboardList">
+      <template x-if="brackets.length && standings.length">
+        <div class="col-md-12 py-3">
+          <nav class="nav nav-pills nav-fill">
+            <button :class="{'nav-link': true, 'active': !activeBracket}" @click="activeBracket=null">{% trans %}All Houses{% endtrans %}</button>
+            <template x-for="bracket in brackets">
+              <button :class="{'nav-link': true, 'active': activeBracket == bracket.id}" x-text="bracket.name" @click="activeBracket=bracket.id"></button>
+            </template>
+          </nav>
+        </div>
+      </template>
+
+      <div class="col-md-12" x-show="standings.length">
+        <div class="table-responsive shadow-lg rounded">
+          <table class="table table-striped align-middle mb-0">
+            <thead>
+            <tr>
+              <th style="width: 80px" class="text-center">Rank</th>
+              <th class="text-start ps-4">{{ get_mode_as_word(capitalize=True) }}</th>
+              <th style="width: 150px" class="text-end pe-4">Score</th>
+            </tr>
+            </thead>
+
+            <tbody>
+              <template x-for="(standing, index) in standings.filter(i => activeBracket ? i.bracket_id==activeBracket : true)">
+                <tr>
+                  <th scope="row" class="text-center">
+                    <template x-if="index === 0">
+                      <span class="badge" style="background: linear-gradient(135deg, #ffd700, #b8860b); color: #000; font-size: 0.95rem;">
+                        <i class="fas fa-crown me-1"></i> 1st
+                      </span>
+                    </template>
+                    <template x-if="index === 1">
+                      <span class="badge" style="background: linear-gradient(135deg, #e0e0e0, #9e9e9e); color: #000; font-size: 0.9rem;">
+                        2nd
+                      </span>
+                    </template>
+                    <template x-if="index === 2">
+                      <span class="badge" style="background: linear-gradient(135deg, #cd7f32, #8b4513); color: #fff; font-size: 0.85rem;">
+                        3rd
+                      </span>
+                    </template>
+                    <template x-if="index > 2">
+                      <span class="text-muted" x-text="index + 1"></span>
+                    </template>
+                  </th>
+                  <td class="text-start ps-4">
+                    <a :href="standing.account_url" class="fw-bold text-decoration-none" style="color: var(--hw-gold-bright); font-size: 1.1rem;" x-text="standing.name"></a>
+                    <template x-if="standing.bracket_name">
+                      <span class="badge ms-2" style="background: rgba(229, 193, 88, 0.2); border: 1px solid var(--hw-border-gold); color: var(--hw-gold-bright);" x-text="standing.bracket_name"></span>
+                    </template>
+                  </td>
+                  <td class="text-end pe-4">
+                    <span class="fw-bold" style="font-family: var(--hw-font-code); color: var(--hw-gold-main); font-size: 1.15rem;" x-text="standing.score + ' PTS'"></span>
+                  </td>
+                </tr>
+              </template>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div class="col-md-12" x-show="! standings.length">
+        <div class="text-center py-5 my-4" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
+          <i class="fas fa-trophy fa-3x mb-3" style="color: var(--hw-gold-muted); opacity: 0.5;"></i>
+          <h3 class="text-center" style="color: var(--hw-gold-bright);">The House Hourglasses Are Clear</h3>
+          <p class="text-muted">No house has claimed points yet. Solve an incantation to inaugurate the board!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+{% endblock %}
+
+{% block scripts %}
+  {{ Assets.js("assets/js/scoreboard.js") }}
+{% endblock %}
