@@ -22,14 +22,14 @@
       <ul class="navbar-nav me-auto align-items-lg-center">
         <li class="nav-item">
           <a class="nav-link" href="{{ url_for('challenges.listing') }}">
-            <i class="fas fa-book-skull pe-1"></i> Spellbook
+            <i class="fas fa-flag pe-1"></i> Challenges
           </a>
         </li>
 
         {% if Configs.account_visibility != 'admins' and Configs.score_visibility != 'admins' %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('scoreboard.listing') }}">
-              <i class="fas fa-trophy pe-1"></i> House Cup
+              <i class="fas fa-trophy pe-1"></i> Scoreboard
             </a>
           </li>
         {% endif %}
@@ -37,7 +37,7 @@
         {% if Configs.account_visibility != 'admins' and Configs.user_mode == 'teams' %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('teams.listing') }}">
-              <i class="fas fa-shield-halved pe-1"></i> Houses
+              <i class="fas fa-users pe-1"></i> Teams
             </a>
           </li>
         {% endif %}
@@ -45,7 +45,7 @@
         {% if Configs.account_visibility != 'admins' %}
           <li class="nav-item">
             <a class="nav-link" href="{{ url_for('users.listing') }}">
-              <i class="fas fa-hat-wizard pe-1"></i> Wizards
+              <i class="fas fa-user pe-1"></i> Users
             </a>
           </li>
         {% endif %}
@@ -68,16 +68,16 @@
         </li>
 
         {% if authed() %}
-          <!-- Owl Post (Notifications) -->
+          <!-- Notifications -->
           <li class="nav-item my-1 my-lg-0">
-            <a class="nav-link position-relative px-2" href="{{ url_for('views.notifications') }}" title="Owl Post (Notifications)">
-              <i class="fas fa-scroll"></i>
-              <span class="d-lg-none ms-1">Owl Post</span>
+            <a class="nav-link position-relative px-2" href="{{ url_for('views.notifications') }}" title="Notifications">
+              <i class="fas fa-bell"></i>
+              <span class="d-lg-none ms-1">Notifications</span>
               <span x-data x-show="$store.unread_count > 0" x-text="$store.unread_count" class="position-absolute top-1 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;"></span>
             </a>
           </li>
 
-          <!-- User Wizard Dropdown -->
+          <!-- User Dropdown -->
           <li class="nav-item dropdown my-1 my-lg-0">
             <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarWizardDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <i class="fas fa-user-circle pe-1 text-gold"></i>
@@ -86,13 +86,13 @@
             <ul class="dropdown-menu dropdown-menu-end shadow-lg" aria-labelledby="navbarWizardDropdown" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); min-width: 200px;">
               <li>
                 <a class="dropdown-item text-light py-2" href="{{ url_for('users.private') }}">
-                  <i class="fas fa-id-badge pe-2 text-gold"></i> Wizard Profile
+                  <i class="fas fa-id-badge pe-2 text-gold"></i> Profile
                 </a>
               </li>
               {% if Configs.user_mode == "teams" %}
                 <li>
                   <a class="dropdown-item text-light py-2" href="{{ url_for('teams.private') }}">
-                    <i class="fas fa-shield-halved pe-2 text-gold"></i> My House
+                    <i class="fas fa-users pe-2 text-gold"></i> My Team
                   </a>
                 </li>
               {% endif %}
@@ -100,19 +100,19 @@
                 <li><hr class="dropdown-divider" style="border-color: rgba(229,193,88,0.25);"></li>
                 <li>
                   <a class="dropdown-item text-gold py-2" href="{{ url_for('admin.view') }}">
-                    <i class="fas fa-wand-magic pe-2"></i> Headmaster Panel
+                    <i class="fas fa-screwdriver-wrench pe-2"></i> Admin Panel
                   </a>
                 </li>
               {% endif %}
               <li><hr class="dropdown-divider" style="border-color: rgba(229,193,88,0.25);"></li>
               <li>
                 <a class="dropdown-item text-light py-2" href="{{ url_for('views.settings') }}">
-                  <i class="fas fa-cogs pe-2 text-muted"></i> Chamber Settings
+                  <i class="fas fa-cogs pe-2 text-muted"></i> Settings
                 </a>
               </li>
               <li>
                 <a class="dropdown-item text-danger py-2" href="{{ url_for('auth.logout') }}">
-                  <i class="fas fa-arrow-right-from-bracket pe-2"></i> Leave Chamber
+                  <i class="fas fa-arrow-right-from-bracket pe-2"></i> Logout
                 </a>
               </li>
             </ul>
@@ -122,14 +122,14 @@
           {% if registration_visible() %}
             <li class="nav-item">
               <a class="nav-link" href="{{ url_for('auth.register') }}">
-                <i class="fas fa-user-plus pe-1"></i> Enroll Wizard
+                <i class="fas fa-user-plus pe-1"></i> Register
               </a>
             </li>
           {% endif %}
 
           <li class="nav-item">
             <a class="nav-link btn-enter-chamber" href="{{ url_for('auth.login') }}">
-              <i class="fas fa-arrow-right-to-bracket pe-1"></i> Enter Chamber
+              <i class="fas fa-arrow-right-to-bracket pe-1"></i> Login
             </a>
           </li>
         {% endif %}

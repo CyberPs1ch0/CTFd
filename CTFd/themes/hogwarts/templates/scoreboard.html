@@ -3,8 +3,8 @@
 {% block content %}
   <div class="container pt-4 pb-2">
     <div class="text-center mb-4">
-      <h1 class="hero-title" style="font-size: 2.8rem;">The House Cup</h1>
-      <p class="hero-submotto">Live enchantment scores of the Great Hall</p>
+      <h1 class="hero-title" style="font-size: 2.8rem;">Scoreboard</h1>
+      <p class="hero-submotto">Live team rankings and standings</p>
       <div class="magical-divider">
         <span>✦ ✦ ✦</span>
       </div>
@@ -22,7 +22,7 @@
       <template x-if="brackets.length && standings.length">
         <div class="col-md-12 py-3">
           <nav class="nav nav-pills nav-fill">
-            <button :class="{'nav-link': true, 'active': !activeBracket}" @click="activeBracket=null">{% trans %}All Houses{% endtrans %}</button>
+            <button :class="{'nav-link': true, 'active': !activeBracket}" @click="activeBracket=null">{% trans %}All Teams{% endtrans %}</button>
             <template x-for="bracket in brackets">
               <button :class="{'nav-link': true, 'active': activeBracket == bracket.id}" x-text="bracket.name" @click="activeBracket=bracket.id"></button>
             </template>
@@ -83,8 +83,8 @@
       <div class="col-md-12" x-show="! standings.length">
         <div class="text-center py-5 my-4" style="background: var(--hw-bg-card); border: 1px solid var(--hw-border-gold); border-radius: 12px;">
           <i class="fas fa-trophy fa-3x mb-3" style="color: var(--hw-gold-muted); opacity: 0.5;"></i>
-          <h3 class="text-center" style="color: var(--hw-gold-bright);">The House Hourglasses Are Clear</h3>
-          <p class="text-muted">No house has claimed points yet. Solve an incantation to inaugurate the board!</p>
+          <h3 class="text-center" style="color: var(--hw-gold-bright);">The Scoreboard is Empty</h3>
+          <p class="text-muted">No team has claimed points yet. Solve a challenge to inaugurate the board!</p>
         </div>
       </div>
     </div>
