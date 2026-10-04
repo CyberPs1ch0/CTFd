@@ -41,21 +41,9 @@
         <template x-for="(category, idx) in getCategories()" :key="idx">
           <div class="pt-4 mb-4">
             <div class="category-header d-flex justify-content-between align-items-baseline">
-              <h3>
-                <span class="category-icon">
-                  <template x-if="category.includes('Outdoor')"><span>🏹</span></template>
-                  <template x-if="category.includes('Sanity')"><span>🌟</span></template>
-                  <template x-if="category.includes('Elementary')"><span>⚡</span></template>
-                  <template x-if="category.includes('Runic')"><span>ᚱ</span></template>
-                  <template x-if="category.includes('Sigil')"><span>🔮</span></template>
-                  <template x-if="category.includes('Incantation')"><span>✨</span></template>
-                  <template x-if="category.includes('Divination')"><span>👁️</span></template>
-                  <template x-if="category.includes('Enchantment')"><span>🧪</span></template>
-                  <template x-if="category.includes('Dimension')"><span>🌌</span></template>
-                  <template x-if="category.includes('Teleportation')"><span>🌀</span></template>
-                  <template x-if="category.includes('Fantastic')"><span>🐉</span></template>
-                  <template x-if="category.includes('Vows') || category.includes('Contract')"><span>📜</span></template>
-                  <template x-if="category.includes('Imagination') || category.includes('Freeform')"><span>🪄</span></template>
+              <h3 class="d-flex align-items-center">
+                <span class="category-icon me-2">
+                  <i class="fas" :class="getCategoryIconClass(category)"></i>
                 </span>
                 <span x-text="category"></span>
               </h3>
@@ -94,6 +82,22 @@
 {% endblock %}
 
 {% block scripts %}
+  <script>
+    function getCategoryIconClass(category) {
+      const c = (category || '').toLowerCase();
+      if (c.includes('outdoor')) return 'fa-compass';
+      if (c.includes('sanity')) return 'fa-circle-check';
+      if (c.includes('elementary')) return 'fa-bolt';
+      if (c.includes('runic') || c.includes('sigil') || c.includes('incantation')) return 'fa-scroll';
+      if (c.includes('divination')) return 'fa-eye';
+      if (c.includes('magical') || c.includes('objects')) return 'fa-flask';
+      if (c.includes('dimension') || c.includes('teleport')) return 'fa-infinity';
+      if (c.includes('fantastic') || c.includes('beast')) return 'fa-dragon';
+      if (c.includes('vows') || c.includes('contract')) return 'fa-file-signature';
+      if (c.includes('imagination') || c.includes('freeform')) return 'fa-wand-magic-sparkles';
+      return 'fa-shapes';
+    }
+  </script>
   {{ Assets.js("assets/js/challenges.js") }}
   <script src="/themes/hogwarts/static/vendor/katex/katex.min.js"></script>
   <script src="/themes/hogwarts/static/vendor/katex/auto-render.min.js"></script>

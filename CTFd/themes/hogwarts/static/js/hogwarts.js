@@ -377,4 +377,21 @@
 
   window.HogwartsRenderMath = triggerKaTeX;
 
+  // Export Category Icon Helper
+  window.getCategoryIconClass = function(category) {
+    const c = (category || '').toLowerCase();
+    if (c.includes('outdoor')) return 'fa-compass';
+    if (c.includes('sanity')) return 'fa-circle-check';
+    if (c.includes('elementary')) return 'fa-bolt';
+    if (c.includes('runic') || c.includes('sigil') || c.includes('incantation')) return 'fa-scroll';
+    if (c.includes('divination')) return 'fa-eye';
+    if (c.includes('magical') || c.includes('objects')) return 'fa-flask';
+    if (c.includes('dimension') || c.includes('teleport')) return 'fa-infinity';
+    if (c.includes('fantastic') || c.includes('beast')) return 'fa-dragon';
+    if (c.includes('vows') || c.includes('contract')) return 'fa-file-signature';
+    if (c.includes('imagination') || c.includes('freeform')) return 'fa-wand-magic-sparkles';
+    return 'fa-shapes';
+  };
+
+
 })();
