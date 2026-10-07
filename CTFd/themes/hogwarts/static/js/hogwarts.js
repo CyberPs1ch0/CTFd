@@ -380,6 +380,7 @@
   // Export Category Icon Helper
   window.getCategoryIconClass = function(category) {
     const c = (category || '').toLowerCase();
+    if (c.includes('science')) return 'fa-atom';
     if (c.includes('outdoor')) return 'fa-compass';
     if (c.includes('sanity')) return 'fa-circle-check';
     if (c.includes('elementary')) return 'fa-bolt';
